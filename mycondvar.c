@@ -18,7 +18,7 @@ void my_cond_wait(my_cond_t *c, my_mutex_t *m, int thread_id)
     c->waiting_flags[thread_id] = 1;
     my_mutex_unlock(&c->slock);
 
-    my_mutex_unlock(&m);
+    my_mutex_unlock(m);
     while (c->waiting_flags[thread_id] == 1)
     {
         sched_yield();
